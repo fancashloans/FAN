@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Now - FAN CASH LOANS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f8f9fa;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .page-title {
+            text-align: center;
+            color: #0f766e;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e5e7eb;
+            z-index: 0;
+        }
+
+        .progress-fill {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            height: 2px;
+            background: #14b8a6;
+            transition: width 0.3s ease;
+            z-index: 1;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #9ca3af;
+            transition: all 0.3s;
+        }
+
+        .step-circle.active {
+            background: #14b8a6;
+            border-color: #14b8a6;
+            color: white;
+        }
+
+        .step-circle.completed {
+            background: #0f766e;
+            border-color: #0f766e;
+            color: white;
+        }
+
+        .step-label {
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: #6b7280;
+            text-align: center;
+        }
+
+        /* Form Container */
+        .form-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .form-step {
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .form-step h2 {
+            color: #0f766e;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #14b8a6;
+            box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* File Upload */
+        .file-upload {
+            border: 2px dashed #d1d5db;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .file-upload:hover {
+            border-color: #14b8a6;
+            background: #f0fdfa;
+        }
+
+        .file-upload.dragover {
+            border-color: #14b8a6;
+            background: #ccfbf1;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .file-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .file-list {
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem;
+            background: #f3f4f6;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+        }
+
+        .file-item-name {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .file-item-remove {
+            color: #ef4444;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Review Section */
+        .review-section {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .review-section h3 {
+            color: #0f766e;
+            margin-bottom: 1rem;
+        }
+
+        .review-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .review-item:last-child {
+            border-bottom: none;
+        }
+
+        .review-label {
+            color: #6b7280;
+        }
+
+        .review-value {
+            font-weight: 500;
+            color: #1f2937;
+        }
+
+        /* Buttons */
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #14b8a6;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0f766e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+        }
+
+        .btn-secondary {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .btn-secondary:hover {
+            background: #d1d5db;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Success Screen */
+        .success-screen {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .success-screen.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 2rem;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .success-screen h2 {
+            color: #0f766e;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .success-screen p {
+            color: #6b7280;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .progress-bar {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .step-label {
+                font-size: 0.75rem;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            .form-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">FAN CASH LOANS</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="apply.html">Apply Now</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Apply for a Loan</h1>
+        <p class="page-subtitle">Complete the application in 5 simple steps</p>
+
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+                <div class="progress-step">
+                    <div class="step-circle active" data-step="1">1</div>
+                    <div class="step-label">Personal</div>
+                </div>
+                <div class="progress-step">
+                    <div class="step-circle" data-step="2">2</div>
+                    <div class="step-label">Loan Details</div>
+                </div>
+                <div class="progress-step">
+                    <div class="step-circle" data-step="3">3</div>
+                    <div class="step-label">Employment</div>
+                </div>
+                <div class="progress-step">
+                    <div class="step-circle" data-step="4">4</div>
+                    <div class="step-label">Documents</div>
+                </div>
+                <div class="progress-step">
+                    <div class="step-circle" data-step="5">5</div>
+                    <div class="step-label">Review</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <form id="loanApplication">
+                <!-- Step 1: Personal Details -->
+                <div class="form-step active" data-step="1">
+                    <h2>Personal Details</h2>
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="idNumber">ID Number *</label>
+                        <input type="text" id="idNumber" name="idNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Residential Address *</label>
+                        <textarea id="address" name="address" required></textarea>
+                    </div>
+                </div>
+
+                <!-- Step 2: Loan Details -->
+                <div class="form-step" data-step="2">
+                    <h2>Loan Details</h2>
+                    <div class="form-group">
+                        <label for="loanAmount">Loan Amount (R) *</label>
+                        <input type="number" id="loanAmount" name="loanAmount" min="1000" max="100000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loanPurpose">Loan Purpose *</label>
+                        <select id="loanPurpose" name="loanPurpose" required>
+                            <option value="">Select purpose</option>
+                            <option value="debt">Debt Consolidation</option>
+                            <option value="emergency">Emergency Expenses</option>
+                            <option value="home">Home Improvement</option>
+                            <option value="education">Education</option>
+                            <option value="business">Business</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="loanDuration">Loan Duration (Months) *</label>
+                        <select id="loanDuration" name="loanDuration" required>
+                            <option value="">Select duration</option>
+                            <option value="3">3 Months</option>
+                            <option value="6">6 Months</option>
+                            <option value="12">12 Months</option>
+                            <option value="24">24 Months</option>
+                            <option value="36">36 Months</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Step 3: Employment Info -->
+                <div class="form-step" data-step="3">
+                    <h2>Employment Information</h2>
+                    <div class="form-group">
+                        <label for="employmentStatus">Employment Status *</label>
+                        <select id="employmentStatus" name="employmentStatus" required>
+                            <option value="">Select status</option>
+                            <option value="employed">Employed</option>
+                            <option value="self-employed">Self-Employed</option>
+                            <option value="unemployed">Unemployed</option>
+                            <option value="retired">Retired</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="employer">Employer Name</label>
+                        <input type="text" id="employer" name="employer">
+                    </div>
+                    <div class="form-group">
+                        <label for="monthlyIncome">Monthly Income (R) *</label>
+                        <input type="number" id="monthlyIncome" name="monthlyIncome" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="employmentDuration">Employment Duration (Years)</label>
+                        <input type="number" id="employmentDuration" name="employmentDuration" min="0" step="0.5">
+                    </div>
+                </div>
+
+                <!-- Step 4: Documents -->
+                <div class="form-step" data-step="4">
+                    <h2>Upload Documents</h2>
+                    <div class="form-group">
+                        <label>ID Document *</label>
+                        <div class="file-upload" data-upload="idDocument">
+                            <input type="file" id="idDocument" accept=".pdf,.jpg,.jpeg,.png">
+                            <div class="file-icon">📄</div>
+                            <p>Click to upload or drag and drop</p>
+                            <p style="font-size: 0.875rem; color: #6b7280;">PDF, JPG, or PNG (Max 5MB)</p>
+                        </div>
+                        <div class="file-list" id="idDocumentList"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Proof of Residence *</label>
+                        <div class="file-upload" data-upload="proofOfResidence">
+                            <input type="file" id="proofOfResidence" accept=".pdf,.jpg,.jpeg,.png">
+                            <div class="file-icon">🏠</div>
+                            <p>Click to upload or drag and drop</p>
+                            <p style="font-size: 0.875rem; color: #6b7280;">Utility bill or bank statement</p>
+                        </div>
+                        <div class="file-list" id="proofOfResidenceList"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Latest Payslip</label>
+                        <div class="file-upload" data-upload="payslip">
+                            <input type="file" id="payslip" accept=".pdf,.jpg,.jpeg,.png">
+                            <div class="file-icon">💰</div>
+                            <p>Click to upload or drag and drop</p>
+                            <p style="font-size: 0.875rem; color: #6b7280;">Most recent payslip</p>
+                        </div>
+                        <div class="file-list" id="payslipList"></div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Review -->
+                <div class="form-step" data-step="5">
+                    <h2>Review Your Application</h2>
+                    <div class="review-section">
+                        <h3>Personal Details</h3>
+                        <div class="review-item">
+                            <span class="review-label">Full Name:</span>
+                            <span class="review-value" id="reviewFullName"></span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">Email:</span>
+                            <span class="review-value" id="reviewEmail"></span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">Phone:</span>
+                            <span class="review-value" id="reviewPhone"></span>
+                        </div>
+                    </div>
+                    <div class="review-section">
+                        <h3>Loan Details</h3>
+                        <div class="review-item">
+                            <span class="review-label">Loan Amount:</span>
+                            <span class="review-value" id="reviewLoanAmount"></span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">Purpose:</span>
+                            <span class="review-value" id="reviewLoanPurpose"></span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">Duration:</span>
+                            <span class="review-value" id="reviewLoanDuration"></span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">Monthly Repayment:</span>
+                            <span class="review-value" id="reviewMonthlyRepayment"></span>
+                        </div>
+                    </div>
+                    <div class="review-section">
+                        <h3>Employment Information</h3>
+                        <div class="review-item">
+                            <span class="review-label">Status:</span>
+                            <span class="review-value" id="reviewEmploymentStatus"></span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">Monthly Income:</span>
+                            <span class="review-value" id="reviewMonthlyIncome"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">Previous</button>
+                    <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
+                </div>
+            </form>
+
+            <div class="success-screen" id="successScreen">
+                <div class="success-icon">✓</div>
+                <h2>Application Submitted Successfully!</h2>
+                <p>Thank you for applying with FAN CASH LOANS. Your application is being processed and you'll hear from us within 24 hours.</p>
+                <a href="index.html" class="btn btn-primary">Return to Home</a>
+                <a href="calculator.html" class="btn btn-secondary" style="margin-left: 1rem;">Calculate Repayment</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 FAN CASH LOANS. All rights reserved.</p>
+        <p>NCR Registration: NCRCP10837</p>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+        const formData = {};
+        const uploadedFiles = {};
+
+        // Navigation
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+
+        nextBtn.addEventListener('click', () => {
+            if (validateStep(currentStep)) {
+                if (currentStep < totalSteps) {
+                    saveStepData(currentStep);
+                    currentStep++;
+                    updateStep();
+                } else {
+                    submitForm();
+                }
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStep();
+            }
+        });
+
+        function updateStep() {
+            // Update form steps
+            document.querySelectorAll('.form-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.add('active');
+
+            // Update progress circles
+            document.querySelectorAll('.step-circle').forEach(circle => {
+                const step = parseInt(circle.dataset.step);
+                circle.classList.remove('active', 'completed');
+                if (step < currentStep) {
+                    circle.classList.add('completed');
+                    circle.textContent = '✓';
+                } else if (step === currentStep) {
+                    circle.classList.add('active');
+                    circle.textContent = step;
+                } else {
+                    circle.textContent = step;
+                }
+            });
+
+            // Update progress bar
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+
+            // Update buttons
+            prevBtn.style.display = currentStep === 1 ? 'none' : 'block';
+            nextBtn.textContent = currentStep === totalSteps ? 'Submit Application' : 'Next';
+
+            // If on review step, populate review data
+            if (currentStep === 5) {
+                populateReview();
+            }
+        }
+
+        function validateStep(step) {
+            const currentStepElement = document.querySelector(`.form-step[data-step="${step}"]`);
+            const inputs = currentStepElement.querySelectorAll('input[required], select[required], textarea[required]');
+            
+            for (let input of inputs) {
+                if (!input.value.trim()) {
+                    alert('Please fill in all required fields');
+                    input.focus();
+                    return false;
+                }
+            }
+
+            // Special validation for step 4 (documents)
+            if (step === 4) {
+                if (!uploadedFiles.idDocument || !uploadedFiles.proofOfResidence) {
+                    alert('Please upload required documents (ID and Proof of Residence)');
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        function saveStepData(step) {
+            const currentStepElement = document.querySelector(`.form-step[data-step="${step}"]`);
+            const inputs = currentStepElement.querySelectorAll('input, select, textarea');
+            
+            inputs.forEach(input => {
+                if (input.type !== 'file') {
+                    formData[input.name] = input.value;
+                }
+            });
+        }
+
+        function populateReview() {
+            document.getElementById('reviewFullName').textContent = formData.fullName || '';
+            document.getElementById('reviewEmail').textContent = formData.email || '';
+            document.getElementById('reviewPhone').textContent = formData.phone || '';
+            document.getElementById('reviewLoanAmount').textContent = formData.loanAmount ? `R ${parseInt(formData.loanAmount).toLocaleString()}` : '';
+            document.getElementById('reviewLoanPurpose').textContent = formData.loanPurpose || '';
+            document.getElementById('reviewLoanDuration').textContent = formData.loanDuration ? `${formData.loanDuration} months` : '';
+            document.getElementById('reviewEmploymentStatus').textContent = formData.employmentStatus || '';
+            document.getElementById('reviewMonthlyIncome').textContent = formData.monthlyIncome ? `R ${parseInt(formData.monthlyIncome).toLocaleString()}` : '';
+
+            // Calculate monthly repayment
+            if (formData.loanAmount && formData.loanDuration) {
+                const amount = parseFloat(formData.loanAmount);
+                const months = parseInt(formData.loanDuration);
+                const monthlyInterest = 0.05;
+                const totalAmount = amount * (1 + (monthlyInterest * months));
+                const monthlyPayment = totalAmount / months;
+                document.getElementById('reviewMonthlyRepayment').textContent = `R ${monthlyPayment.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+            }
+        }
+
+        function submitForm() {
+            // In a real application, this would send data to a server
+            console.log('Form Data:', formData);
+            console.log('Uploaded Files:', uploadedFiles);
+
+            // Hide form and show success screen
+            document.getElementById('loanApplication').style.display = 'none';
+            document.querySelector('.form-buttons').style.display = 'none';
+            document.getElementById('successScreen').classList.add('active');
+        }
+
+        // File Upload Handling
+        document.querySelectorAll('.file-upload').forEach(uploadArea => {
+            const input = uploadArea.querySelector('input[type="file"]');
+            const fileListId = input.id + 'List';
+            const fileList = document.getElementById(fileListId);
+
+            uploadArea.addEventListener('click', () => input.click());
+
+            input.addEventListener('change', (e) => {
+                handleFiles(e.target.files, input.id, fileList);
+            });
+
+            // Drag and drop
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('dragover');
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                handleFiles(e.dataTransfer.files, input.id, fileList);
+            });
+        });
+
+        function handleFiles(files, inputId, fileList) {
+            if (files.length > 0) {
+                const file = files[0];
+                uploadedFiles[inputId] = file;
+
+                fileList.innerHTML = `
+                    <div class="file-item">
+                        <div class="file-item-name">
+                            <span>✓</span>
+                            <span>${file.name}</span>
+                        </div>
+                        <span class="file-item-remove" onclick="removeFile('${inputId}')">✕</span>
+                    </div>
+                `;
+            }
+        }
+
+        function removeFile(inputId) {
+            delete uploadedFiles[inputId];
+            document.getElementById(inputId + 'List').innerHTML = '';
+            document.getElementById(inputId).value = '';
+        }
+
+        // Initialize
+        updateStep();
+    </script>
+</body>
+</html>

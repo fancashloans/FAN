@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - FAN CASH LOANS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f8f9fa;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(15, 118, 110, 0.95), rgba(20, 184, 166, 0.95)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%230f766e" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        /* Story Section */
+        .story-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .story-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .story-content h2 {
+            color: #0f766e;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #14b8a6;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+
+        .timeline-content {
+            width: 45%;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0f766e;
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: #14b8a6;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #14b8a6;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Core Values */
+        .values-section {
+            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+            padding: 4rem 2rem;
+        }
+
+        .values-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #0f766e;
+            margin-bottom: 3rem;
+        }
+
+        .values-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .value-card:nth-child(1) { animation-delay: 0.1s; }
+        .value-card:nth-child(2) { animation-delay: 0.2s; }
+        .value-card:nth-child(3) { animation-delay: 0.3s; }
+        .value-card:nth-child(4) { animation-delay: 0.4s; }
+        .value-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(15, 118, 110, 0.2);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            color: #0f766e;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .value-card p {
+            color: #6b7280;
+        }
+
+        /* Vision & Mission */
+        .vision-mission {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .vision-box, .mission-box {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            opacity: 0;
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        .mission-box {
+            animation: slideInRight 0.8s ease forwards;
+        }
+
+        .vision-box h2, .mission-box h2 {
+            color: #0f766e;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .vision-box p, .mission-box p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4b5563;
+        }
+
+        /* Compliance Section */
+        .compliance-section {
+            background: #0f766e;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .compliance-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .compliance-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .ncr-badge {
+            display: inline-block;
+            background: white;
+            color: #0f766e;
+            padding: 2rem 3rem;
+            border-radius: 12px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .ncr-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(255,255,255,0.3);
+        }
+
+        .compliance-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #0f766e;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255,255,255,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 50px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .vision-mission {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">FAN CASH LOANS</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="apply.html">Apply Now</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Our Journey to Empower Financial Freedom</h1>
+        <p>Since 2018, FAN CASH LOANS has been dedicated to providing transparent, fast, and reliable financial solutions to South Africans.</p>
+    </section>
+
+    <section class="story-section">
+        <div class="story-content">
+            <h2>The Story of FAN CASH LOANS</h2>
+            <p>Founded in 2018, FAN CASH LOANS was born from a simple yet powerful vision: to make financial assistance accessible, transparent, and stress-free for every South African. We recognized that traditional lending often came with hidden fees, complex terms, and lengthy approval processes that left people frustrated and uncertain.</p>
+            <p>Our founders, experienced financial professionals, set out to create a different kind of lending institution—one that puts people first. We built FAN CASH LOANS on the principles of transparency, speed, and empathy, ensuring that every client understands exactly what they're signing up for with our straightforward 5% monthly repayment structure.</p>
+            <p>Today, we're proud to have helped thousands of South Africans achieve their financial goals, whether it's covering unexpected expenses, consolidating debt, or investing in their future. Our commitment to responsible lending and customer satisfaction has made us a trusted name in the industry.</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2018</div>
+                        <p>FAN CASH LOANS founded with a mission to revolutionize personal lending in South Africa</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div style="width: 45%;"></div>
+                </div>
+                <div class="timeline-item">
+                    <div style="width: 45%;"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2019</div>
+                        <p>Reached milestone of 1,000 satisfied clients and expanded our service offerings</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023</div>
+                        <p>Approved over 10,000 loans, helping South Africans achieve financial freedom</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div style="width: 45%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <h2>Our Core Values</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">🛡️</div>
+                <h3>Transparency</h3>
+                <p>No hidden fees, no surprises. We believe in clear, honest communication about every aspect of your loan.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">⚡</div>
+                <h3>Speed</h3>
+                <p>Fast approvals and quick disbursements because we understand that when you need help, you need it now.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🔒</div>
+                <h3>Security</h3>
+                <p>Your personal and financial information is protected with bank-level security measures.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">❤️</div>
+                <h3>Empathy</h3>
+                <p>We understand that everyone's financial situation is unique, and we treat each client with respect and understanding.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">✓</div>
+                <h3>Reliability</h3>
+                <p>Consistent service and support you can count on, from application to final repayment.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="vision-mission">
+        <div class="vision-box">
+            <h2>Our Vision</h2>
+            <p>To be South Africa's most trusted and accessible financial partner, empowering every individual to achieve their financial goals with confidence and dignity. We envision a future where financial assistance is transparent, fair, and available to all who need it.</p>
+        </div>
+        <div class="mission-box">
+            <h2>Our Mission</h2>
+            <p>To provide fast, transparent, and responsible lending solutions that help South Africans overcome financial challenges and seize opportunities. We are committed to maintaining the highest standards of customer service, regulatory compliance, and ethical lending practices.</p>
+        </div>
+    </section>
+
+    <section class="compliance-section">
+        <div class="compliance-content">
+            <h2>Compliance with National Credit Regulator</h2>
+            <div class="ncr-badge">NCR Registration: NCRCP10837</div>
+            <p>FAN CASH LOANS operates fully under the National Credit Act to ensure safe, transparent lending for all South Africans. Our NCR registration guarantees that we adhere to the highest standards of responsible lending and consumer protection.</p>
+            <p>We are committed to treating our customers fairly, providing clear information about loan terms, and ensuring that all lending practices comply with South African law.</p>
+            <a href="legal.html" class="cta-button">View Legal & Compliance Information</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 FAN CASH LOANS. All rights reserved.</p>
+        <p>NCR Registration: NCRCP10837</p>
+        <p>Registered in South Africa since 2018</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe animated elements
+        document.querySelectorAll('.value-card, .timeline-item, .vision-box, .mission-box').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

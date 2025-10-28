@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Tips Blog - FAN CASH LOANS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f8f9fa;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Featured Slider */
+        .featured-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #0f766e;
+            margin-bottom: 2rem;
+        }
+
+        .featured-slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .featured-article {
+            min-width: 100%;
+            background: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+        }
+
+        .featured-image {
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+        }
+
+        .featured-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-category {
+            display: inline-block;
+            background: #ccfbf1;
+            color: #0f766e;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .featured-content h2 {
+            font-size: 2rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .featured-content p {
+            color: #6b7280;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            background: #14b8a6;
+            color: white;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            align-self: flex-start;
+        }
+
+        .read-more:hover {
+            background: #0f766e;
+            transform: translateY(-2px);
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .slider-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .slider-btn:hover {
+            background: #14b8a6;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .article-thumbnail {
+            height: 200px;
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-card:hover .article-thumbnail {
+            transform: scale(1.05);
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-category {
+            display: inline-block;
+            background: #f0fdfa;
+            color: #0f766e;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .article-content h3 {
+            font-size: 1.25rem;
+            color: #1a1a1a;
+            margin-bottom: 0.75rem;
+        }
+
+        .article-excerpt {
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        .article-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-read-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Reading Progress Bar */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #14b8a6;
+            z-index: 9999;
+            transition: width 0.1s;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .featured-article {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-image {
+                height: 200px;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slider-controls {
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <header>
+        <nav>
+            <div class="logo">FAN CASH LOANS</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="apply.html">Apply Now</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Smart Financial Tips from FAN CASH LOANS</h1>
+        <p>Expert advice to help you make better financial decisions</p>
+    </section>
+
+    <div class="container">
+        <!-- Featured Articles Slider -->
+        <section class="featured-section">
+            <h2 class="section-title">Featured Articles</h2>
+            <div class="featured-slider">
+                <div class="slider-track" id="sliderTrack">
+                    <div class="featured-article">
+                        <div class="featured-image">💰</div>
+                        <div class="featured-content">
+                            <span class="featured-category">Loan Management</span>
+                            <h2>How to Manage Short-Term Loans Smartly</h2>
+                            <p>Learn the best practices for managing short-term loans, including budgeting tips, repayment strategies, and how to avoid common pitfalls that can lead to financial stress.</p>
+                            <a href="#" class="read-more">Read Full Article →</a>
+                        </div>
+                    </div>
+                    <div class="featured-article">
+                        <div class="featured-image">📊</div>
+                        <div class="featured-content">
+                            <span class="featured-category">Financial Planning</span>
+                            <h2>Understanding 5% Monthly Repayments</h2>
+                            <p>A comprehensive guide to understanding how monthly interest rates work, what 5% means for your loan, and how to calculate your total repayment amount accurately.</p>
+                            <a href="#" class="read-more">Read Full Article →</a>
+                        </div>
+                    </div>
+                    <div class="featured-article">
+                        <div class="featured-image">💡</div>
+                        <div class="featured-content">
+                            <span class="featured-category">Budgeting</span>
+                            <h2>Simple Budgeting Tricks That Actually Work</h2>
+                            <p>Discover practical budgeting techniques that fit into your lifestyle, help you save money, and ensure you can comfortably meet your loan repayments every month.</p>
+                            <a href="#" class="read-more">Read Full Article →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn" id="prevSlide">‹</button>
+                    <button class="slider-btn" id="nextSlide">›</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Articles Grid -->
+        <section>
+            <h2 class="section-title">Latest Articles</h2>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <div class="article-thumbnail">🏦</div>
+                    <div class="article-content">
+                        <span class="article-category">Credit Score</span>
+                        <h3>Building Your Credit Score in South Africa</h3>
+                        <p class="article-excerpt">Your credit score is crucial for financial health. Learn how to build and maintain a strong credit profile that opens doors to better financial opportunities.</p>
+                        <div class="article-meta">
+                            <span class="article-date">📅 Dec 15, 2024</span>
+                            <span class="article-read-time">⏱️ 5 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-thumbnail">🎯</div>
+                    <div class="article-content">
+                        <span class="article-category">Debt Management</span>
+                        <h3>Debt Consolidation: Is It Right for You?</h3>
+                        <p class="article-excerpt">Explore the pros and cons of debt consolidation, when it makes sense, and how to choose the right consolidation strategy for your situation.</p>
+                        <div class="article-meta">
+                            <span class="article-date">📅 Dec 12, 2024</span>
+                            <span class="article-read-time">⏱️ 7 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-thumbnail">💳</div>
+                    <div class="article-content">
+                        <span class="article-category">Financial Literacy</span>
+                        <h3>Understanding Interest Rates and Fees</h3>
+                        <p class="article-excerpt">Demystify the world of interest rates, fees, and charges. Learn what to look for in loan agreements and how to compare different offers effectively.</p>
+                        <div class="article-meta">
+                            <span class="article-date">📅 Dec 10, 2024</span>
+                            <span class="article-read-time">⏱️ 6 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-thumbnail">🚨</div>
+                    <div class="article-content">
+                        <span class="article-category">Emergency Fund</span>
+                        <h3>Building an Emergency Fund on a Tight Budget</h3>
+                        <p class="article-excerpt">Even with limited income, you can build an emergency fund. Discover practical strategies to save for unexpected expenses without sacrificing your daily needs.</p>
+                        <div class="article-meta">
+                            <span class="article-date">📅 Dec 8, 2024</span>
+                            <span class="article-read-time">⏱️ 5 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-thumbnail">📱</div>
+                    <div class="article-content">
+                        <span class="article-category">Technology</span>
+                        <h3>Best Financial Apps for South Africans</h3>
+                        <p class="article-excerpt">Technology can help you manage your finances better. We review the best budgeting, saving, and investment apps available in South Africa.</p>
+                        <div class="article-meta">
+                            <span class="article-date">📅 Dec 5, 2024</span>
+                            <span class="article-read-time">⏱️ 8 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-thumbnail">🏠</div>
+                    <div class="article-content">
+                        <span class="article-category">Home Finance</span>
+                        <h3>Smart Ways to Finance Home Improvements</h3>
+                        <p class="article-excerpt">Planning to renovate? Learn about different financing options for home improvements and how to choose the most cost-effective solution for your project.</p>
+                        <div class="article-meta">
+                            <span class="article-date">📅 Dec 3, 2024</span>
+                            <span class="article-read-time">⏱️ 6 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-thumbnail">👨‍👩‍👧‍👦</div>
+                    <div class="article-content">
+                        <span class="article-category">Family Finance</span>
+                        <h3>Teaching Kids About Money Management</h3>
+                        <p class="article-excerpt">Financial literacy starts young. Discover age-appropriate ways to teach your children about saving, spending, and the value of money.</p>
+                        <div class="article-meta">
+                            <span class="article-date">📅 Dec 1, 2024</span>
+                            <span class="article-read-time">⏱️ 5 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-thumbnail">🎓</div>
+                    <div class="article-content">
+                        <span class="article-category">Education</span>
+                        <h3>Financing Your Education: Options and Tips</h3>
+                        <p class="article-excerpt">Education is an investment in your future. Explore various ways to finance your studies, from student loans to bursaries and scholarships.</p>
+                        <div class="article-meta">
+                            <span class="article-date">📅 Nov 28, 2024</span>
+                            <span class="article-read-time">⏱️ 7 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-thumbnail">🔒</div>
+                    <div class="article-content">
+                        <span class="article-category">Security</span>
+                        <h3>Protecting Yourself from Financial Fraud</h3>
+                        <p class="article-excerpt">Stay safe in the digital age. Learn how to recognize and avoid common financial scams, protect your personal information, and secure your accounts.</p>
+                        <div class="article-meta">
+                            <span class="article-date">📅 Nov 25, 2024</span>
+                            <span class="article-read-time">⏱️ 6 min read</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 FAN CASH LOANS. All rights reserved.</p>
+        <p>NCR Registration: NCRCP10837</p>
+    </footer>
+
+    <script>
+        // Featured Slider
+        let currentSlide = 0;
+        const sliderTrack = document.getElementById('sliderTrack');
+        const slides = sliderTrack.querySelectorAll('.featured-article');
+        const totalSlides = slides.length;
+
+        document.getElementById('nextSlide').addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        });
+
+        document.getElementById('prevSlide').addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        });
+
+        function updateSlider() {
+            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Auto-advance slider
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }, 5000);
+
+        // Reading Progress Bar
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
+            document.getElementById('readingProgress').style.width = scrollPercent + '%';
+        });
+
+        // Article Card Click
+        document.querySelectorAll('.article-card').forEach(card => {
+            card.addEventListener('click', () => {
+                alert('Article page would open here. In a real application, this would navigate to the full article.');
+            });
+        });
+    </script>
+</body>
+</html>

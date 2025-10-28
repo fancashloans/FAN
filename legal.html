@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal & Compliance - FAN CASH LOANS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f8f9fa;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        /* NCR Certificate Section */
+        .ncr-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .ncr-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+            color: white;
+            padding: 3rem 4rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(15, 118, 110, 0.3);
+            transition: all 0.3s;
+        }
+
+        .ncr-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(15, 118, 110, 0.4);
+        }
+
+        .ncr-badge h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .ncr-badge p {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .ncr-section p {
+            color: #4b5563;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Compliance Badges */
+        .compliance-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge-icon {
+            width: 60px;
+            height: 60px;
+            background: #f0fdfa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: all 0.3s;
+        }
+
+        .badge-item:hover .badge-icon {
+            background: #ccfbf1;
+            transform: scale(1.1);
+        }
+
+        .badge-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-weight: 600;
+        }
+
+        /* Legal Sections */
+        .legal-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .legal-section h2 {
+            color: #0f766e;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .legal-section h2:hover {
+            color: #14b8a6;
+        }
+
+        .toggle-icon {
+            font-size: 1.25rem;
+            transition: transform 0.3s;
+        }
+
+        .toggle-icon.open {
+            transform: rotate(180deg);
+        }
+
+        .legal-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .legal-content.open {
+            max-height: 2000px;
+        }
+
+        .legal-content h3 {
+            color: #374151;
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .legal-content p {
+            color: #6b7280;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .legal-content ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .legal-content li {
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-button-primary {
+            background: white;
+            color: #0f766e;
+        }
+
+        .cta-button-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255,255,255,0.3);
+        }
+
+        .cta-button-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button-secondary:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .ncr-section,
+            .legal-section {
+                padding: 1.5rem;
+            }
+
+            .ncr-badge {
+                padding: 2rem 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">FAN CASH LOANS</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="apply.html">Apply Now</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Legal & Compliance Information</h1>
+        <p>Transparency and compliance are at the heart of everything we do</p>
+    </section>
+
+    <div class="container">
+        <!-- NCR Certificate Section -->
+        <div class="ncr-section">
+            <h2 style="color: #0f766e; font-size: 2rem; margin-bottom: 1rem;">National Credit Regulator Registration</h2>
+            <div class="ncr-badge">
+                <h2>NCR Registered</h2>
+                <p>NCRCP10837</p>
+            </div>
+            <p>FAN CASH LOANS is fully registered under the National Credit Regulator (NCR) with registration number NCRCP10837. This registration ensures that we operate in full compliance with the National Credit Act (NCA) of South Africa.</p>
+            <p>Our NCR registration guarantees that we adhere to the highest standards of responsible lending, consumer protection, and ethical business practices. We are committed to treating all our customers fairly and transparently.</p>
+            
+            <div class="compliance-badges">
+                <div class="badge-item">
+                    <div class="badge-icon">🛡️</div>
+                    <span class="badge-label">NCR Registered</span>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">🔒</div>
+                    <span class="badge-label">Secure</span>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">✓</div>
+                    <span class="badge-label">Compliant</span>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">⚖️</div>
+                    <span class="badge-label">Fair Lending</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Privacy Policy -->
+        <div class="legal-section">
+            <h2 onclick="toggleSection('privacy')">
+                <span class="toggle-icon" id="privacyIcon">▼</span>
+                Privacy Policy
+            </h2>
+            <div class="legal-content" id="privacyContent">
+                <p><strong>Last Updated: December 2024</strong></p>
+                
+                <h3>1. Information We Collect</h3>
+                <p>We collect information that you provide directly to us, including:</p>
+                <ul>
+                    <li>Personal identification information (name, ID number, contact details)</li>
+                    <li>Financial information (income, employment details, bank account information)</li>
+                    <li>Documentation (ID copies, proof of residence, payslips)</li>
+                    <li>Loan application and repayment history</li>
+                </ul>
+
+                <h3>2. How We Use Your Information</h3>
+                <p>We use the information we collect to:</p>
+                <ul>
+                    <li>Process and evaluate your loan applications</li>
+                    <li>Verify your identity and conduct credit checks</li>
+                    <li>Communicate with you about your loan and account</li>
+                    <li>Comply with legal and regulatory requirements</li>
+                    <li>Improve our services and customer experience</li>
+                </ul>
+
+                <h3>3. Information Security</h3>
+                <p>We implement industry-standard security measures to protect your personal information from unauthorized access, disclosure, alteration, or destruction. All sensitive data is encrypted and stored securely.</p>
+
+                <h3>4. Information Sharing</h3>
+                <p>We do not sell, trade, or rent your personal information to third parties. We may share your information with:</p>
+                <ul>
+                    <li>Credit bureaus for credit assessment purposes</li>
+                    <li>Service providers who assist in our operations</li>
+                    <li>Legal authorities when required by law</li>
+                    <li>Financial institutions for payment processing</li>
+                </ul>
+
+                <h3>5. Your Rights</h3>
+                <p>You have the right to access, correct, or delete your personal information. You may also object to certain processing activities. Contact us to exercise these rights.</p>
+
+                <h3>6. Contact Us</h3>
+                <p>If you have questions about our privacy practices, please contact us at privacy@fancashloans.co.za</p>
+            </div>
+        </div>
+
+        <!-- Terms of Use -->
+        <div class="legal-section">
+            <h2 onclick="toggleSection('terms')">
+                <span class="toggle-icon" id="termsIcon">▼</span>
+                Terms of Use
+            </h2>
+            <div class="legal-content" id="termsContent">
+                <p><strong>Last Updated: December 2024</strong></p>
+                
+                <h3>1. Acceptance of Terms</h3>
+                <p>By accessing and using FAN CASH LOANS services, you agree to be bound by these Terms of Use and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using our services.</p>
+
+                <h3>2. Loan Application and Approval</h3>
+                <p>Submitting a loan application does not guarantee approval. All applications are subject to our credit assessment process and approval criteria. We reserve the right to decline any application without providing a reason.</p>
+
+                <h3>3. Loan Terms and Conditions</h3>
+                <ul>
+                    <li>Interest rate: 5% per month on the outstanding loan balance</li>
+                    <li>Loan amounts: R1,000 to R100,000</li>
+                    <li>Loan duration: 3 to 36 months</li>
+                    <li>No hidden fees or charges</li>
+                    <li>Early repayment allowed without penalty</li>
+                </ul>
+
+                <h3>4. Repayment Obligations</h3>
+                <p>You agree to repay the loan according to the agreed schedule. Failure to make timely payments may result in:</p>
+                <ul>
+                    <li>Late payment fees as permitted by law</li>
+                    <li>Negative impact on your credit score</li>
+                    <li>Legal action to recover the outstanding amount</li>
+                    <li>Reporting to credit bureaus</li>
+                </ul>
+
+                <h3>5. Responsible Lending</h3>
+                <p>We are committed to responsible lending practices. We will not lend you more than you can afford to repay based on our assessment of your financial situation.</p>
+
+                <h3>6. Changes to Terms</h3>
+                <p>We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting on our website. Your continued use of our services constitutes acceptance of the modified terms.</p>
+
+                <h3>7. Governing Law</h3>
+                <p>These terms are governed by the laws of South Africa. Any disputes will be resolved in the courts of South Africa.</p>
+            </div>
+        </div>
+
+        <!-- Responsible Lending Policy -->
+        <div class="legal-section">
+            <h2 onclick="toggleSection('lending')">
+                <span class="toggle-icon" id="lendingIcon">▼</span>
+                Responsible Lending Policy
+            </h2>
+            <div class="legal-content" id="lendingContent">
+                <p><strong>Last Updated: December 2024</strong></p>
+                
+                <h3>Our Commitment</h3>
+                <p>FAN CASH LOANS is committed to responsible lending practices that protect our customers and promote financial well-being. We believe in transparent, fair, and ethical lending.</p>
+
+                <h3>Key Principles</h3>
+                
+                <h3>1. Affordability Assessment</h3>
+                <p>Before approving any loan, we conduct a thorough affordability assessment to ensure you can comfortably repay the loan without financial hardship. This includes:</p>
+                <ul>
+                    <li>Reviewing your income and expenses</li>
+                    <li>Checking your existing debt obligations</li>
+                    <li>Assessing your credit history</li>
+                    <li>Ensuring the loan fits within your budget</li>
+                </ul>
+
+                <h3>2. Transparent Pricing</h3>
+                <p>We provide clear, upfront information about all loan costs:</p>
+                <ul>
+                    <li>Fixed 5% monthly interest rate</li>
+                    <li>No hidden fees or charges</li>
+                    <li>Clear breakdown of total repayment amount</li>
+                    <li>Written loan agreement with all terms clearly stated</li>
+                </ul>
+
+                <h3>3. Fair Treatment</h3>
+                <p>We treat all customers fairly and with respect:</p>
+                <ul>
+                    <li>No discrimination based on race, gender, age, or other protected characteristics</li>
+                    <li>Clear communication in language you understand</li>
+                    <li>Respectful collection practices</li>
+                    <li>Support for customers experiencing financial difficulty</li>
+                </ul>
+
+                <h3>4. Customer Support</h3>
+                <p>We provide ongoing support throughout your loan journey:</p>
+                <ul>
+                    <li>Clear explanation of loan terms before you sign</li>
+                    <li>Regular communication about your account</li>
+                    <li>Assistance if you're struggling with repayments</li>
+                    <li>Financial education resources</li>
+                </ul>
+
+                <h3>5. Compliance</h3>
+                <p>We fully comply with:</p>
+                <ul>
+                    <li>The National Credit Act (NCA)</li>
+                    <li>National Credit Regulator (NCR) regulations</li>
+                    <li>Protection of Personal Information Act (POPIA)</li>
+                    <li>All other applicable South African laws</li>
+                </ul>
+
+                <h3>If You're Struggling</h3>
+                <p>If you're having difficulty making repayments, please contact us immediately. We're here to help and can discuss options such as:</p>
+                <ul>
+                    <li>Payment plan adjustments</li>
+                    <li>Temporary payment relief</li>
+                    <li>Debt counseling referrals</li>
+                    <li>Financial advice and support</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Ready to Apply?</h2>
+            <p>Now that you understand our commitment to transparency and compliance, take the next step toward your financial goals.</p>
+            <div class="cta-buttons">
+                <a href="apply.html" class="cta-button cta-button-primary">Apply Now</a>
+                <a href="index.html" class="cta-button cta-button-secondary">Return to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 FAN CASH LOANS. All rights reserved.</p>
+        <p>NCR Registration: NCRCP10837</p>
+        <p>Registered in South Africa since 2018</p>
+    </footer>
+
+    <script>
+        function toggleSection(sectionId) {
+            const content = document.getElementById(sectionId + 'Content');
+            const icon = document.getElementById(sectionId + 'Icon');
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                icon.classList.remove('open');
+            } else {
+                // Close all other sections
+                document.querySelectorAll('.legal-content').forEach(el => {
+                    el.classList.remove('open');
+                });
+                document.querySelectorAll('.toggle-icon').forEach(el => {
+                    el.classList.remove('open');
+                });
+                
+                // Open clicked section
+                content.classList.add('open');
+                icon.classList.add('open');
+            }
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
