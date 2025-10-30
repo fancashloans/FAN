@@ -96,8 +96,8 @@
         }
 
         .logo-icon {
-            width: 60px;
-            height: 60px;
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
             border-radius: 12px;
             display: flex;
@@ -375,9 +375,6 @@
             margin-top: 30px;
         }
 
-        }
-
-        /* <CHANGE> Added company signature image placeholder */
         .signature-image {
             width: 30px;
             height: 30px;
@@ -766,6 +763,7 @@
     </div>
 
     <script>
+        // <CHANGE> Optimized PDF generation for much smaller file size
         async function downloadPDF() {
             const button = document.querySelector('.download-button');
             button.textContent = '⏳ Generating PDF...';
@@ -773,7 +771,12 @@
 
             try {
                 const { jsPDF } = window.jspdf;
-                const pdf = new jsPDF('p', 'mm', 'a4');
+                const pdf = new jsPDF({
+                    orientation: 'p',
+                    unit: 'mm',
+                    format: 'a4',
+                    compress: true // Enable compression
+                });
                 
                 const pages = ['page1', 'page2', 'page3'];
                 
@@ -781,13 +784,16 @@
                     const page = document.getElementById(pages[i]);
                     
                     const canvas = await html2canvas(page, {
-                        scale: 2,
+                        scale: 0.8, // Reduced from 2 to 0.8 for smaller file size
                         useCORS: true,
                         logging: false,
-                        backgroundColor: '#ffffff'
+                        backgroundColor: '#ffffff',
+                        removeContainer: true,
+                        imageTimeout: 0
                     });
                     
-                    const imgData = canvas.toDataURL('image/png');
+                    // Convert to JPEG with compression instead of PNG
+                    const imgData = canvas.toDataURL('image/jpeg', 0.6); // 60% quality
                     const imgWidth = 210; // A4 width in mm
                     const imgHeight = (canvas.height * imgWidth) / canvas.width;
                     
@@ -795,7 +801,8 @@
                         pdf.addPage();
                     }
                     
-                    pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                    // Use JPEG format for smaller file size
+                    pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight, undefined, 'FAST');
                 }
                 
                 pdf.save('Loan_Approval_Agreement_FCL-2025-BL-409411.pdf');
