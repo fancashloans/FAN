@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loan Approval Agreement - FAN CASH LOANS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -19,6 +21,32 @@
             padding: 20px;
         }
 
+        .download-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(30, 58, 138, 0.4);
+        }
+
+        .download-button:active {
+            transform: translateY(0);
+        }
+
         .document-container {
             max-width: 850px;
             margin: 0 auto;
@@ -30,6 +58,12 @@
             padding: 60px;
             min-height: 1100px;
             position: relative;
+            page-break-after: always;
+            background: white;
+        }
+
+        .document-page:last-child {
+            page-break-after: auto;
         }
 
         /* Watermark */
@@ -403,6 +437,10 @@
             .document-page {
                 padding: 40px;
             }
+
+            .download-button {
+                display: none;
+            }
         }
 
         /* Stamp */
@@ -433,11 +471,22 @@
             font-size: 10px;
             margin-top: 5px;
         }
+
+        .page-number {
+            position: absolute;
+            bottom: 30px;
+            right: 60px;
+            font-size: 12px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
-    <div class="document-container">
-        <div class="document-page">
+    <button class="download-button" onclick="downloadPDF()">📥 Download PDF</button>
+
+    <div class="document-container" id="pdfContent">
+        <!-- PAGE 1 -->
+        <div class="document-page" id="page1">
             <!-- Watermark -->
             <div class="watermark">APPROVED</div>
 
@@ -537,6 +586,29 @@
                 </p>
             </div>
 
+            <div class="page-number">Page 1 of 3</div>
+        </div>
+
+        <!-- PAGE 2 -->
+        <div class="document-page" id="page2">
+            <!-- Watermark -->
+            <div class="watermark">APPROVED</div>
+
+            <!-- Header -->
+            <div class="header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <div class="logo-text">
+                        <h1>FAN CASH LOANS</h1>
+                        <p>YOUR TRUSTED FINANCIAL PARTNER SINCE 2018</p>
+                    </div>
+                </div>
+                <div class="header-info">
+                    <span>NCR Registered Credit Provider: NCRCP10837</span>
+                    <span>Reference: FCL-2025-BL-409411</span>
+                </div>
+            </div>
+
             <!-- Repayment Schedule -->
             <div class="repayment-schedule">
                 <h3>📊 Loan Repayment Schedule</h3>
@@ -596,6 +668,29 @@
                 </ul>
             </div>
 
+            <div class="page-number">Page 2 of 3</div>
+        </div>
+
+        <!-- PAGE 3 -->
+        <div class="document-page" id="page3">
+            <!-- Watermark -->
+            <div class="watermark">APPROVED</div>
+
+            <!-- Header -->
+            <div class="header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <div class="logo-text">
+                        <h1>FAN CASH LOANS</h1>
+                        <p>YOUR TRUSTED FINANCIAL PARTNER SINCE 2018</p>
+                    </div>
+                </div>
+                <div class="header-info">
+                    <span>NCR Registered Credit Provider: NCRCP10837</span>
+                    <span>Reference: FCL-2025-BL-409411</span>
+                </div>
+            </div>
+
             <!-- Next Steps -->
             <div class="content-section">
                 <h3>Next Steps</h3>
@@ -625,7 +720,7 @@
                         <div class="signature-label" style="margin-top: 10px;">Date: _________________</div>
                     </div>
                     <div class="signature-box">
-                        <img src="image/fd.png" alt="Company Signature" class="signature-image" />
+                     <img src="image/fd.png" alt="Company Signature" class="signature-image" />
                         <div class="signature-line"></div>
                         <label>Authorized Signatory</label>
                         <div class="name">FAN CASH LOANS</div>
@@ -658,7 +753,60 @@
                     This is a legally binding document. Please keep a copy for your records.
                 </p>
             </div>
+
+            <div class="page-number">Page 3 of 3</div>
         </div>
     </div>
+
+    <script>
+        async function downloadPDF() {
+            const button = document.querySelector('.download-button');
+            button.textContent = '⏳ Generating PDF...';
+            button.disabled = true;
+
+            try {
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                
+                const pages = ['page1', 'page2', 'page3'];
+                
+                for (let i = 0; i < pages.length; i++) {
+                    const page = document.getElementById(pages[i]);
+                    
+                    const canvas = await html2canvas(page, {
+                        scale: 2,
+                        useCORS: true,
+                        logging: false,
+                        backgroundColor: '#ffffff'
+                    });
+                    
+                    const imgData = canvas.toDataURL('image/png');
+                    const imgWidth = 210; // A4 width in mm
+                    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                    
+                    if (i > 0) {
+                        pdf.addPage();
+                    }
+                    
+                    pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                }
+                
+                pdf.save('Loan_Approval_Agreement_FCL-2025-BL-409411.pdf');
+                
+                button.textContent = '✅ PDF Downloaded!';
+                setTimeout(() => {
+                    button.textContent = '📥 Download PDF';
+                    button.disabled = false;
+                }, 2000);
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                button.textContent = '❌ Error - Try Again';
+                setTimeout(() => {
+                    button.textContent = '📥 Download PDF';
+                    button.disabled = false;
+                }, 2000);
+            }
+        }
+    </script>
 </body>
 </html>
